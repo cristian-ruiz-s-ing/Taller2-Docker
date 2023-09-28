@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taller 2 docker</title>
+</head>
+<body>
+<h1>Cadena</h1>
+<p>Mensaje: </p>
+<input type="text" id="valor" placeholder="Ingrese el mensaje">
+<button onclick="operarCad()">Submit</button>
+<p id="result"></p>
+
+<script>
+        function operarCad() {
+            const cadena = document.getElementById("valor").value;
+
+            fetch(`http://localhost:4567/taller2/${valor}`, {
+                method: 'GET',
+                mode: 'no-cors'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").textContent = `${data}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
